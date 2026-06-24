@@ -86,6 +86,14 @@ TRADITION_MAP = {
     "ramprasad":                   "Shakta_Padavali",
     "kabya sangraha":              "Shakta_Padavali",
 
+"gitagovinda":              "Vaishnava_Sanskrit",
+"bhakti rasamrita sindhu":  "Vaishnava_Bengali",
+"bhakti_rasamrita":         "Vaishnava_Bengali",
+"chaitanya charita":        "Vaishnava_Bengali",
+"sri chaitanya":            "Vaishnava_Bengali",
+"srikrishna kirtan":        "Vaishnava_Bengali",
+"candidas krishna":         "Vaishnava_Bengali",
+
     # Layer 6: Baul / Modern Bengali
     "lalan":                       "Baul_Bengali",
     "lalon":                       "Baul_Bengali",
@@ -307,6 +315,11 @@ def main():
         ("Shakta_Padavali", "Baul_Bengali",    "Shakta Padavali→  Baul"),
         ("Charyapada",      "Baul_Bengali",    "Charyapada     →  Baul (long arc)"),
         ("Buddhist_Tara",   "Baul_Bengali",    "Buddhist Tara  →  Baul (full arc)"),
+        ("Bridge_Tara",     "Vaishnava_Sanskrit", "Bridge Tara    →  Vaishnava Sanskrit"),
+("Buddhist_Tara",   "Vaishnava_Sanskrit", "Buddhist Tara  →  Vaishnava Sanskrit"),
+("Shakta_Kali",     "Vaishnava_Bengali",  "Shakta Kali    →  Vaishnava Bengali"),
+("Vaishnava_Bengali","Baul_Bengali",      "Vaishnava Bengali → Baul"),
+("Vaishnava_Sanskrit","Shakta_Kali",      "Vaishnava Sanskrit → Shakta Kali"),
     ]
 
     print("\n--- Cross-tradition cosine similarity (avg) ---\n")
