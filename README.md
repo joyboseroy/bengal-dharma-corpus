@@ -1,7 +1,10 @@
-# Bengali Dharma Corpus: Tracing Buddhist and Shakta Vocabulary Across Centuries
+# Bengal Dharma Corpus: Tracing Buddhist, Shakta and Vaishnava Vocabulary Across Centuries
 
-A computational text analysis project exploring whether Buddhist Vajrayana vocabulary
-survived into Bengali Shakta and Baul devotional traditions.
+A computational text analysis project exploring how Buddhist Vajrayana vocabulary
+survived and transformed across Bengali Shakta, Vaishnava and Baul devotional traditions
+over twelve centuries.
+
+**Structured dataset on HuggingFace:** https://huggingface.co/datasets/joyboseroy/bengal-dharma-corpus
 
 ---
 
@@ -22,16 +25,18 @@ Buddhist tradition.
 
 This project asks: can we see this process in the words themselves? If Buddhist
 vocabulary migrated into Shakta and Baul texts over centuries, can we measure that
-migration computationally?
+migration computationally? And how does the Buddhist-Shakta connection compare to the
+parallel Vaishnava tradition, which developed in the same region at the same time?
 
 ---
 
 ## What I Did
 
-### Step 1: Built a corpus of texts across six tradition layers
+### Step 1: Built a corpus of texts across eight tradition layers
 
-I collected 48 text documents spanning roughly 1,200 years of Bengali devotional
-literature. The six layers follow a historical chain:
+I collected 75 text documents spanning roughly 1,200 years of Bengali and Sanskrit
+devotional literature across three major traditions. The eight layers follow a
+historical chain:
 
 **Layer 1: Vajrayana Buddhist Tara texts (8th to 12th century, Sanskrit)**
 Hymns to Tara, Vajrayogini, Vajradevi, Prajnaparamita. Hevajra Tantra excerpts.
@@ -47,23 +52,34 @@ Texts that present the Buddhist goddess Tara in an explicitly Shakta framing. Th
 Brihannilatantra tradition is the main source here. These texts worship Tara as
 Nila Sarasvati, a Shakta goddess, using both Buddhist and Shakta vocabulary.
 
-**Layer 4: Shakta Kali texts (14th to 18th century, Sanskrit)**
-Two independent Kali Sahasranamas (1000 names of Kali), the Dakshina Kalika
-Sahasranama, and related Kali stotras.
+**Layer 4: Vaishnava Sanskrit (12th century, Sanskrit)**
+The Gitagovinda by Jayadeva, the foundational Sanskrit Vaishnava poem describing
+the love of Radha and Krishna. Serves as the control tradition: same century and
+language as the Bridge Tara texts, but a completely separate religious lineage.
 
-**Layer 5: Shakta Padavali (18th century, Bengali)**
+**Layer 5: Shakta Kali and Durga texts (14th to 18th century, Sanskrit)**
+Two independent Kali Sahasranamas, the Dakshina Kalika Sahasranama, Durga Saptashati,
+and related stotras.
+
+**Layer 6: Vaishnava Bengali (14th to 16th century, Bengali)**
+Srikrishna Kirtan by Badu Chandidas (14th-15th century Old Bengali), Bhakti
+Rasamrita Sindhu Bengali translation (16th century), and the Chaitanya Charitamrita
+by Krishnadas Kaviraj (16th century Bengali). Represents the Chaitanya Vaishnava
+tradition which developed in Bengal parallel to the Shakta tradition.
+
+**Layer 7: Shakta Padavali (18th century, Bengali)**
 The devotional songs of Ramprasad Sen, the great Bengali Shakta poet. His Kabya
 Sangraha contains songs addressed to Kali, Tara, Shyama, and other goddess forms.
 This text was a scanned image PDF from 1914 and required OCR processing to extract.
 
-**Layer 6: Baul and modern Bengali devotional (18th to 19th century, Bengali)**
+**Layer 8: Baul and modern Bengali devotional (18th to 19th century, Bengali)**
 Songs of Lalon Fakir, the great Baul mystic, and Rabindranath Tagore's Gitanjali.
 
 ### Step 2: Processed the texts
 
 The texts exist in three scripts: Devanagari Unicode (Sanskrit), Bengali Unicode
-(Charyapada, Ramprasad, Lalon, Gitanjali), and IAST/Roman transliteration (Hevajra,
-Devi Mahatmyam, and some Tara texts).
+(Charyapada, Ramprasad, Lalon, Gitanjali, Vaishnava Bengali), and IAST/Roman
+transliteration (Hevajra, Devi Mahatmyam, Gitagovinda, and some Tara texts).
 
 The Ramprasad Sen corpus was a 372-page scanned book. I used Tesseract OCR with the
 Bengali language model to extract text, producing 39,067 Bengali tokens.
@@ -101,34 +117,49 @@ mahavidya, tantra, mantra, yantra, kula, shrividya, bhairava.
 
 ## Results
 
-### The Sanskrit transmission chain
+### The key specificity finding: Buddhist-Shakta versus Vaishnava
 
-Looking only at Devanagari texts, which avoids cross-script comparison noise:
+The most important result in the corpus is a comparison between traditions.
 
 | Tradition Pair | Cosine Similarity |
 |---|---|
-| Buddhist Tara to Bridge Tara | 0.29 |
-| Bridge Tara to Shakta Kali | 0.40 |
-| Buddhist Tara to Shakta Kali | 0.31 |
+| Bridge Tara to Shakta Kali | 0.54 |
+| Buddhist Tara to Shakta Kali | 0.44 |
+| Buddhist Tara to Vaishnava Sanskrit | 0.06 |
+| Bridge Tara to Vaishnava Sanskrit | 0.06 |
+| Vaishnava Sanskrit to Shakta Kali | 0.00 |
 
-The Bridge Tara cluster sits closer to Shakta Kali than to the Buddhist Tara texts
-it derives from. This means the Bridge Tara tradition has linguistically moved further
-toward the Shakta side than toward its Buddhist origins.
+The Gitagovinda is a 12th-century Sanskrit poem, the same century as many Bridge
+Tara texts, the same language, the same broad devotional genre. Its similarity to
+Shakta Kali is zero. The Bridge Tara texts are 8.5 times more similar to Shakta
+Kali than to Vaishnava Sanskrit. This shows the Buddhist-Shakta vocabulary overlap
+is not a generic property of Sanskrit devotional literature. It is specific to
+the Buddhist-Shakta transmission chain.
+
+### The Sanskrit transmission chain
+
+| Tradition Pair | Cosine Similarity |
+|---|---|
+| Buddhist Tara to Bridge Tara | 0.43 |
+| Bridge Tara to Shakta Kali | 0.54 |
+| Buddhist Tara to Shakta Kali | 0.44 |
+
+The Bridge Tara tradition has moved linguistically further toward the Shakta side
+than toward its Buddhist origins.
 
 ### The Bengali vernacular chain
 
 | Tradition Pair | Cosine Similarity |
 |---|---|
-| Charyapada to Baul | 0.30 |
-| Shakta Padavali to Baul | 0.41 |
+| Shakta Padavali to Baul | 0.40 |
+| Charyapada to Baul | 0.31 |
+| Vaishnava Bengali to Baul | 0.29 |
 | Buddhist Tara (Sanskrit) to Baul | 0.02 |
 
-The Sanskrit Buddhist corpus has almost no lexical overlap with Baul Bengali (0.02).
-This is partly a script effect since Devanagari and Bengali characters produce no
-shared n-grams. But it also reflects a real historical gap: the Sanskrit Buddhist
-tradition did not directly influence Baul vocabulary. The Old Bengali Charyapada
-shows moderate similarity to Baul (0.30), which is more meaningful since both are
-in Bengali script.
+Both the Buddhist Sahajiya chain (via Charyapada) and the Vaishnava Bengali chain
+contribute to Baul vocabulary, with the Buddhist chain (0.31) marginally stronger
+than the Vaishnava chain (0.29). The Sanskrit Buddhist tradition has near-zero
+overlap with modern Bengali devotional vocabulary.
 
 ### Vocabulary migration in the Bridge Tara texts
 
@@ -141,36 +172,31 @@ by ratios of 2x to 4x:
 | Tara Stotram / Nila Sarasvati Ashtakam | 1.6 | 4.7 | 3.0x |
 | Tarashatanamastotra (Brihannilatantra) | 0.0 | 4.1 | 4.0x+ |
 
-All three migrated texts are from the Brihannilatantra, a specific tantric tradition
-known for absorbing the Buddhist Tara into Shakta worship. Other Tara texts from
-different sources (Brahmayamala, Akshobhyasamhita) retain Buddhist-dominant vocabulary.
+All three migrated texts are from the Brihannilatantra tradition. Tara texts from
+other lineages (Brahmayamala, Takaradi) retain Buddhist-dominant vocabulary.
 
-The tradition-level gradient across the Sanskrit chain:
+The tradition-level vocabulary gradient across the Sanskrit chain:
 
-| Tradition | Buddhist terms/1k | Shakta terms/1k | Ratio |
+| Tradition | Buddhist/1k | Shakta/1k | Ratio |
 |---|---|---|---|
 | Buddhist Tara | 4.2 | 1.2 | 0.3 (Buddhist dominant) |
 | Bridge Tara | 3.6 | 3.2 | 0.9 (near parity) |
 | Shakta Kali | 3.8 | 5.8 | 1.5 (Shakta dominant) |
 
-The Bridge Tara tradition sits at almost exactly equal Buddhist and Shakta vocabulary,
-which matches its historical role as the transitional layer between the two traditions.
-
 ### The Ramprasad finding
 
 Ramprasad Sen's Kabya Sangraha (39,067 Bengali tokens, OCR) gives these counts:
 
-- Kali mentioned 103 times
-- Tara mentioned 56 times
-- Ma (mother) mentioned 196 times
-- Shakti mentioned 15 times
-- Shiva mentioned 35 times
-- Shunyata (emptiness, Buddhist term) mentioned 4 times
+- Kali: 103 mentions
+- Tara: 56 mentions
+- Ma (mother): 196 mentions
+- Shakti: 15 mentions
+- Shiva: 35 mentions
+- Shunyata (Buddhist emptiness term): 4 mentions
 
-Ramprasad addresses Tara and Kali as interchangeable names for the same goddess.
-The Shakta/Buddhist term ratio is 3.0, meaning he uses three times more Shakta
-vocabulary than Buddhist vocabulary. But the Buddhist residue remains clearly present,
-particularly in the continued use of Tara as a goddess name alongside Kali.
+Ramprasad addresses Tara and Kali as interchangeable names for the same goddess,
+six centuries after the Pala monasteries were destroyed. Buddhist vocabulary
+residue is still present in 18th-century Bengali Kali songs.
 
 ---
 
@@ -178,70 +204,67 @@ particularly in the continued use of Tara as a goddess name alongside Kali.
 
 **Script boundaries limit cross-script comparisons.** Character n-grams cannot
 bridge Devanagari and Bengali script. A similarity of 0.02 between Sanskrit Buddhist
-texts and Baul Bengali is partly a measurement artifact, not purely a historical
-finding.
+texts and Baul Bengali is partly a measurement artifact.
 
 **The Charyapada corpus is very small.** The 47 surviving padas are only 843 tokens.
-Similarity calculations with such a small document are less stable than with larger
-corpora.
 
-**Similarity is not the same as transmission.** High cosine similarity between two
-traditions shows shared vocabulary but does not prove historical borrowing. The same
-vocabulary could arise from a common source, parallel development, or genre conventions
-shared across Indian devotional literature.
+**Several large Bengali text files contain modern commentary.** The Candidas, Bhakti
+Rasamrita Sindhu, and Chaitanya Charitamrita files are archive.org full-text dumps
+that include scholarly introductions and footnotes alongside the original verses.
+Token counts reflect the full file, not just the verse content.
 
-**The term lists are manually constructed.** The Buddhist and Shakta term lists
-reflect my judgment about which words belong to each tradition. Many terms (tara,
-sahaja, tantra, dakini) have been used in both traditions and their classification
-is disputed.
+**Similarity is not the same as transmission.** High cosine similarity shows shared
+vocabulary but does not prove historical borrowing.
 
-**No statistical significance testing.** The similarity scores are point estimates
-with no confidence intervals or hypothesis tests. Future work should add bootstrap
-resampling to establish whether observed differences are statistically meaningful.
+**The term lists are manually constructed** and reflect subjective judgments about
+which words belong to which tradition.
 
-**The Ramprasad OCR has 5 to 10 percent character error rate.** This may affect
-specific term counts but is unlikely to change the tradition-level ratios significantly.
+**No statistical significance testing.** Similarity scores are point estimates
+without confidence intervals. Bootstrap resampling is planned for a future version.
+
+**Ramprasad OCR has 5 to 10 percent character error rate.**
 
 ---
 
 ## What the Results Suggest (with appropriate caution)
 
-The analysis is consistent with (but does not prove) the historically argued Buddhist
-to Shakta transmission in Bengal. Specifically:
+1. The Buddhist-Shakta vocabulary overlap is specific to the Buddhist-Shakta
+   transmission chain, not a general property of Sanskrit devotional literature.
+   The Gitagovinda (Vaishnava Sanskrit, 12th century) has zero similarity to
+   Shakta Kali, while Bridge Tara texts (Buddhist-Shakta, same century) have
+   0.54 similarity. This is the strongest evidence the corpus provides.
 
-1. Within the Sanskrit tradition, texts associated with the Brihannilatantra show
-   measurably more Shakta vocabulary than Buddhist vocabulary, even though they are
-   nominally Tara texts. This matches the historical identification of the
-   Brihannilatantra as a key site of Buddhist to Shakta absorption.
+2. Within the Sanskrit tradition, three Brihannilatantra Tara texts show Shakta
+   vocabulary at 2 to 4 times the density of Buddhist vocabulary, measuring the
+   vocabulary migration in specific texts.
 
-2. The Bridge Tara tradition sits at vocabulary parity between Buddhist and Shakta,
-   which is consistent with its role as a transitional layer.
+3. The Bridge Tara tradition sits at vocabulary parity between Buddhist and Shakta,
+   consistent with its role as the transitional layer.
 
-3. Ramprasad Sen's Kali songs preserve significant Tara vocabulary, supporting the
-   view that Tara and Kali were treated as forms of the same goddess in 18th-century
-   Bengal.
+4. Ramprasad Sen's Kali songs preserve significant Tara vocabulary six centuries
+   after the Pala monasteries were destroyed.
 
-4. The Sanskrit Buddhist tradition has very low lexical overlap with Baul Bengali,
-   suggesting the transmission from Buddhism to Baul ran through the vernacular
-   Charyapada tradition rather than the Sanskrit textual tradition.
+5. Both the Buddhist Sahajiya chain (Charyapada) and the Vaishnava Bengali chain
+   contribute to Baul vocabulary, with the Buddhist chain marginally stronger.
 
 ---
 
 ## Files in This Repository
 
 ```
-analyze_corpus.py          Main analysis script
-patch_v3.py                Supplementary analysis with normalized scores
-charyapada_core.txt        Clean reconstruction of the 47 Charyapada padas
-ocr_ramprasad_v2.sh        Shell script for OCR of the Ramprasad PDF
-corpus_analysis_results.txt Full per-document term counts
-similarity_matrix.csv      Full pairwise cosine similarity matrix (50x50)
-corpus_pca_plot.png        PCA visualization of the corpus
+analyze_corpus.py              Main analysis script (handles .txt, .htm, .pdf)
+patch_v3.py                    Supplementary: normalized term scores, Devanagari subset
+generate_hf_tables.py          Generates HuggingFace dataset CSV tables
+charyapada_core.txt            Clean reconstruction of the 47 Charyapada padas
+ocr_ramprasad_v2.sh            Shell script for OCR of the Ramprasad PDF
+corpus_analysis_results.txt    Full per-document term counts
+similarity_matrix.csv          Full pairwise cosine similarity matrix (75x75)
+corpus_pca_plot.png            PCA visualization of the corpus
 ```
 
-The full text corpus files (Sanskrit stotras, Ramprasad OCR, Lalon songs, Gitanjali)
-are not included in this repository due to copyright considerations for modern editions.
-Sources are documented in the script comments.
+The full text corpus files are not included in this repository due to copyright
+considerations for modern editions. Sources are documented in the script comments
+and in the HuggingFace dataset card.
 
 ---
 
@@ -253,9 +276,9 @@ pip3 install scikit-learn numpy matplotlib pandas pdfminer.six beautifulsoup4 lx
 
 For OCR of the Ramprasad PDF:
 ```bash
-# Tesseract with Bengali language model
 wget "https://github.com/tesseract-ocr/tessdata/raw/main/ben.traineddata" \
      -O ~/tessdata/ben.traineddata
+bash ocr_ramprasad_v2.sh
 ```
 
 ---
@@ -269,6 +292,6 @@ traditions: https://github.com/joyboseroy/darshana-graph (arXiv:2606.18222)
 
 ## License
 
-Code: MIT License  
-Text reconstructions (Charyapada core): Public domain  
+Code: MIT License
+Text reconstructions (Charyapada core): Public domain
 Analysis results: CC BY 4.0
