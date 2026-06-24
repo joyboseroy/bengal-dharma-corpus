@@ -3,10 +3,6 @@
 A computational text analysis project exploring whether Buddhist Vajrayana vocabulary
 survived into Bengali Shakta and Baul devotional traditions.
 
-**Author:** Joy Bose  
-**Date:** June 2026  
-**Status:** Exploratory research, GitHub only (not submitted for peer review)
-
 ---
 
 ## What This Project Is About
