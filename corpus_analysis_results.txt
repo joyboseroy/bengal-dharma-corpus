@@ -1,0 +1,70 @@
+BENGAL DHARMA CORPUS ANALYSIS v2
+========================================================================
+
+CROSS-TRADITION SIMILARITIES
+
+  Buddhist Tara  →  Charyapada                     0.0275  █
+  Buddhist Tara  →  Bridge Tara                    0.2944  ██████████████
+  Charyapada     →  Bridge Tara                    0.0339  █
+  Bridge Tara    →  Shakta Kali                    0.4032  ████████████████████
+  Buddhist Tara  →  Shakta Kali                    0.3120  ███████████████
+  Buddhist Tara  →  Shakta Durga                   0.0911  ████
+  Bridge Tara    →  Shakta Durga                   0.0886  ████
+  Kali           →  Durga (within Shakta)          0.0500  ██
+  Shakta Kali    →  Shakta Padavali                0.0000  
+  Shakta Padavali→  Baul                           0.4112  ████████████████████
+  Charyapada     →  Baul (long arc)                0.2977  ██████████████
+  Buddhist Tara  →  Baul (full arc)                0.0172  
+
+PER-FILE TERM SCORES
+
+  Aryatara Ashtottarashata Nama Stotr                  Buddhist_Tara             2      1           3
+  Aryataranamaskaraikavimshati Stotra 2                Buddhist_Tara             0      1          15
+  Aryataranamaskaraikavimshati Stotra                  Buddhist_Tara             0      1          15
+  Aryatarasragdhara Stotram                            Buddhist_Tara             1      0           2
+  Dakshaprokta Kali Stuti                              Shakta_Kali               0      0           0
+  Dakshinakalika Sahasranama Stotram                   Shakta_Kali               7      4           1
+  Devi Mahatmyam or Durga Saptashati                   Shakta_Durga              0      0           0
+  Gitanjali (1)                                        Baul_Bengali              0      0           0
+  Gitanjali                                            Baul_Bengali              0      0           0
+  Kali Stava Brahmakritam                              Shakta_Kali               0      0           0
+  M00363 - AryamaJjuzrImUlakalpam part 1               Unknown                   0      0           0
+  M00364 - AryamaJjuzrImUlakalpam part 2               Unknown                   0      0           0
+  M00365 - AryamaJjuzrImUlakalpam part 3               Unknown                   0      0           0
+  Mahogratara Stuti                                    Bridge_Tara               1      0           3
+  Mahogratarashtaka Stotram                            Bridge_Tara               0      0           0
+  Nairatmashtaka Stotram                               Buddhist_Tara             0      0           1
+  Part of bhagavatIpadyapuShpA~njalIs                  Shakta_Durga              0      0           0
+  Prajnaparamita Stotram                               Buddhist_Tara             0      0           2
+  Shri Kali Sahasranama Stotram 2                      Shakta_Kali               8      6           7
+  Shri Kali Sahasranama Stotram                        Shakta_Kali               8      6           7
+  Shri Kali Shatanama Stotram                          Shakta_Kali               0      2           0
+  Shri Kali Tandava Stotram                            Shakta_Kali               0      0           1
+  Shri Mahishasuramardini Ashtottaras                  Shakta_Durga              0      0         105
+  Shri Nila Sarasvati Stotram 2                        Bridge_Tara               0      0           0
+  Shri Nila Sarasvati Stotram                          Bridge_Tara               0      0           0
+  Shri Tara Sahasranama Stotram 3                      Bridge_Tara               9      9           5
+  Shri Tara Shatanama Stotram                          Bridge_Tara               1      1           1
+  Shri Tara Takaradi Sahasranamastotr                  Bridge_Tara               3      0           0
+  Shri Tarashatanama Stotram                           Bridge_Tara               1      1           0
+  Shrimad Ugratara Hridayastotram                      Bridge_Tara               2      0          17
+  Tara Stotram or Tara Ashtakam or Sh                  Bridge_Tara               1      3           8
+  Tarashatanamastotra from Brihannila                  Bridge_Tara               0      2           0
+  The-Charypada (1)                                    Charyapada                0      0           0
+  The-Charypada                                        Charyapada                0      0           0
+  Vajradevi Stotram                                    Buddhist_Tara             1      0           2
+  Vajrayoginipranamaikavishika                         Buddhist_Tara             1      0           1
+  Vajrayoginyah Pindartha Stuti                        Buddhist_Tara             1      0           2
+  Vasudhara Stotram                                    Buddhist_Tara             0      0           0
+  arya tara stutih                                     Buddhist_Tara             0      0           0
+  charyapada_core                                      Charyapada               34      4          13
+  durgAstutiH Essence of devI mAhAtmy                  Shakta_Durga              0      0           0
+  gitanjali_bengali_clean                              Baul_Bengali             49     12         213
+  hevajra 1                                            Buddhist_Tara             0      0           0
+  hevajra sadhana                                      Buddhist_Tara             0      0           0
+  lalan fakir                                          Baul_Bengali             54     13         970
+  ramprasad_sen_ocr                                    Shakta_Padavali         113    343         863
+  sa_mArkaNDeyapurANa1-93                              Shakta_Durga              0      0           0
+  shrItArAdhyAnam                                      Buddhist_Tara             0      0           0
+  tArAkavacham                                         Bridge_Tara               1      0          20
+  tArAsahasranamastotra from Brihanni                  Bridge_Tara               4     12           8
